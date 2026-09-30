@@ -21,7 +21,7 @@ It is for teams that run their own internal PKI: TLS and mTLS for services and K
 | 🛰️ [**manager**](https://github.com/CryptOS-PKI/manager) | The Fleet Manager backend. Optional control plane: node adoption and linking, cross-node inventory, fleet topology, and an MCP endpoint for AI agents. Talks to nodes over the same mTLS gRPC API. Holds no private keys. Its own Helm chart is the supported way to install it. |
 | 🎨 [**web**](https://github.com/CryptOS-PKI/web) | The Fleet Manager web frontend, and the only web UI in the project. React + TypeScript, built with Vite, embedded in and served by `manager`. |
 | ⚓ [**helm**](https://github.com/CryptOS-PKI/helm) | Helm charts for the control plane on Kubernetes. Today it holds one Fleet Manager chart; the chart in `manager` is the supported install. |
-| 📚 [**docs**](https://github.com/CryptOS-PKI/docs) | The documentation site: installing, running and managing CryptOS, the concepts behind it, and the API reference. |
+| 📚 [**docs**](https://github.com/CryptOS-PKI/docs) | The CryptOS website and documentation: what CryptOS is, installing, running and managing it, the concepts behind it, and the API reference. |
 | 🧪 [**lab**](https://github.com/CryptOS-PKI/lab) | Tooling for testing CryptOS on real and virtual hardware: VMware ESXi via `govc` today, bare metal planned. |
 | 🏠 [**.github**](https://github.com/CryptOS-PKI/.github) | This profile, plus the organization-wide contributing guide, code of conduct and security policy. |
 
