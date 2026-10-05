@@ -1,82 +1,41 @@
 # CryptOS-PKI 🛡️
 
 > 🔐 An immutable, API-driven, high-assurance PKI operating system.
-> Talos Linux philosophy applied to certificate authorities.
-> No SSH. No shell. No interactive access. mTLS gRPC only.
 
-## ✨ What it is
+CryptOS-PKI is an open-source, Apache-2.0 licensed operating system for certificate
+authorities. One signed, immutable image boots as a Root, Intermediate or Issuing CA.
+The CA keys live in the TPM or on an encrypted state partition and never touch disk in
+the clear, and there's no SSH and no shell: the only way in is an mTLS gRPC API, driven
+by the `cryptosctl` CLI or the optional Fleet Manager. It's for teams that run their own
+internal PKI without AD CS and without a general-purpose server holding the CA key. It's
+alpha software, versioned 0.x until 1.0.0.
 
-CryptOS-PKI runs your organization's certificate authorities on a hardened, immutable Linux image. The CA's private keys never touch disk in the clear. The only way in is an mTLS-authenticated gRPC API. Every operation is declarative, audited, and reproducible.
+🏠 **Home:** [cryptos-pki.com](https://cryptos-pki.com)
 
-The project is built in the spirit of [Talos Linux](https://www.talos.dev/): a single static Go init, a read-only SquashFS rootfs, an encrypted state partition, no package manager, no `/bin/sh`. A single image boots into a Root, Intermediate, or Issuing CA role based on its machine config.
+## 🧩 Node and Fleet Manager
 
-It is for teams that run their own internal PKI: TLS and mTLS for services and Kubernetes workloads, network devices, Active Directory domain controllers, vCenter and ESXi hosts, and code signing, without AD CS and without a general-purpose server holding the CA key.
+- [cryptos-node](https://github.com/CryptOS-PKI/cryptos-node): the OS and engine: the signed Unified Kernel Image, the gRPC API, the enrolment and revocation endpoints, and the `cryptosctl` CLI.
+- [cryptos-manager](https://github.com/CryptOS-PKI/cryptos-manager): the Fleet Manager backend: node adoption, inventory and fleet topology over mTLS gRPC, an MCP endpoint for AI agents, and its own Helm chart.
 
-## 📦 Repositories
+## 🖥️ Web
 
-| Repo | What it is |
-|---|---|
-| [**cryptos-node**](https://github.com/CryptOS-PKI/cryptos-node) | The OS / engine. Builds the Unified Kernel Image (UKI). Hosts the gRPC API, embedded etcd, TPM operations, the enrolment and revocation endpoints, and the `cryptosctl` CLI. **No web UI in the image**, by design. |
-| [**cryptos-manager**](https://github.com/CryptOS-PKI/cryptos-manager) | The Fleet Manager backend. Optional control plane: node adoption and linking, cross-node inventory, fleet topology, and an MCP endpoint for AI agents. Talks to nodes over the same mTLS gRPC API. Holds no private keys. Its own Helm chart is the supported way to install it. |
-| [**cryptos-web**](https://github.com/CryptOS-PKI/cryptos-web) | The Fleet Manager web frontend, and the only web UI in the project. React + TypeScript, built with Vite, embedded in and served by `cryptos-manager`. |
-| [**cryptos-release**](https://github.com/CryptOS-PKI/cryptos-release) | Release packaging: the pinned release manifest, plus a deprecated Fleet Manager chart; the chart in `cryptos-manager` is the supported install. |
-| [**website**](https://github.com/CryptOS-PKI/website) | The CryptOS website and documentation: what CryptOS is, installing, running and managing it, the concepts behind it, and the API reference. |
-| [**cryptos-lab**](https://github.com/CryptOS-PKI/cryptos-lab) | Tooling for testing CryptOS on real and virtual hardware: VMware ESXi via `govc` today, bare metal planned. |
-| [**.github**](https://github.com/CryptOS-PKI/.github) | This profile, plus the organization-wide contributing guide, code of conduct and security policy. |
+- [cryptos-web](https://github.com/CryptOS-PKI/cryptos-web): the Fleet Manager web frontend, in React and TypeScript, served by cryptos-manager.
 
-## 🚦 Status
+## 📦 Release and lab
 
-**Alpha.** Versions are `0.x`, and `1.0.0` will be the first generally available release. CryptOS already runs in real production use. Until `1.0.0`, the API and the machine config can still change between releases.
+- [cryptos-release](https://github.com/CryptOS-PKI/cryptos-release): the pinned release manifest, plus a deprecated Fleet Manager chart.
+- [cryptos-lab](https://github.com/CryptOS-PKI/cryptos-lab): tooling for testing CryptOS on real and virtual hardware: VMware ESXi via `govc` today, bare metal planned.
 
-☁️ The project plans to apply to the [CNCF Sandbox](https://github.com/cncf/sandbox).
+## 🌐 Website
 
-### Works today
+- [website](https://github.com/CryptOS-PKI/website): the source of the CryptOS website and documentation.
 
-- 🪨 **One image, three roles.** A signed UKI boots as a Root, Intermediate or Issuing CA, installs to disk from maintenance mode, and upgrades in place. Bring your own Secure Boot key.
-- 🔑 **First-boot ceremony.** Creates the Root on the node itself, RFC 5280 strict.
-- 🌳 **CA hierarchy.** Root, Intermediate and Issuing CAs, subordinate signing (including vCenter VMCA), certificate profiles, and leaf issuance through `cryptosctl` or the Fleet Manager.
-- 🚫 **Revocation.** CRL and OCSP (RFC 6960), with a preflight that blocks issuance while the revocation endpoints don't answer.
-- 🔌 **Enrolment protocols.** ACME (RFC 8555, `http-01`) and EST (RFC 7030) on Intermediate and Issuing nodes, set up in the machine config.
-- 🗝️ **Key protection.** CA keys in the TPM or on the encrypted state partition, whose key is protected by the TPM, the node's hardware identity or an external KMS, plus operator-held key escrow and CA re-key.
-- 🧰 **Management.** `cryptosctl` over mTLS gRPC, a hash-chained audit log, and a read-only status console on the node.
-- 🛰️ **Fleet Manager.** Node adoption, fleet topology, certificates, profiles, operators signed in with client certificates, and an MCP endpoint for AI agents with step-up approvals.
+## 🤝 Contributing
 
-### Being built now
+- [Contributing guide](https://github.com/CryptOS-PKI/.github/blob/main/CONTRIBUTING.md), with the DCO sign-off
+- [Code of Conduct](https://github.com/CryptOS-PKI/.github/blob/main/CODE_OF_CONDUCT.md)
+- [Security policy](https://github.com/CryptOS-PKI/.github/blob/main/SECURITY.md)
 
-- 🔀 **Protocol switches.** ACME and EST turned on and off through `config apply` and the Fleet Manager, as a change that takes effect at the next reboot.
-- 📟 **SCEP** (RFC 8894), so network devices can enrol a trustpoint.
-- ⏱️ **RFC 3161 timestamps** for code signing.
-- 🕰️ **Clock sync, RSA CA keys in the TPM, `cryptosctl` for Windows, and a bare-metal image.**
+## 📄 Licence
 
-### Roadmap
-
-- 🌐 **ACME `dns-01` and wildcard names.**
-- 🪟 **Windows autoenrolment** through Group Policy (MS-XCEP and MS-WSTEP), with no AD CS.
-- 📶 **Machine and user certificates** for VPN and 802.1X.
-- ☸️ **An external CA for a Kubernetes cluster's own certificates.**
-- 🤝 **Two-node HA pairs** with a shared VRRPv3 address, M-of-N quorum for Root operations, and signed late-binding extensions.
-
-## 🧭 Guiding principles
-
-- 🚫 **No interactive access.** No SSH, no shell, no usernames/passwords. Management is `cryptosctl` over mTLS gRPC, or the Fleet Manager (same mTLS gRPC). The OS image hosts no web frontend.
-- 🪨 **Immutable rootfs.** SquashFS, read-only. Persistent state only on the encrypted partition, unsealed at boot by the local TPM, the node's hardware identity or an external KMS.
-- 🔑 **Keys stay on the box.** CA keys live in the local TPM or on the encrypted state partition. Never on disk in the clear. No network HSM.
-- 📜 **Declarative config.** Roles, CA hierarchy, issuance policies, protocols: all version-controlled YAML applied via API. No click-ops.
-- 🦺 **Memory safety.** Go for the node and the Fleet Manager backend. `unsafe` only when crossing into kernel/TPM headers.
-- 🧪 **Stdlib-only on the crypto path.** Key generation, signing, X.509 marshaling, TLS: Go stdlib + `golang.org/x/crypto` only. No `cfssl`, no `smallstep`, no PKI wrappers. Wire formats are written by hand on the stdlib too: the CMS for EST and SCEP, and the JWS for ACME.
-- 📐 **RFC-strict on the wire.** Every protocol (TLS 1.3, X.509, ACME, SCEP, EST, OCSP, RFC 3161, VRRPv3, …) follows its RFC to the letter. MUST is MUST.
-- ✂️ **Minimize maintenance.** When two designs solve a requirement equally well, the lower-maintenance one wins.
-
-## 🤝 Get involved
-
-Start with the [website and docs](https://github.com/CryptOS-PKI/website), and ⭐ or watch the repos to follow along.
-
-Opening issues and pull requests is limited to collaborators today. It will open to the public. When it does, a change starts as an issue from the repo's templates, and every commit is signed off under the [Developer Certificate of Origin](https://developercertificate.org/) (`git commit -s`).
-
-- 📝 [**CONTRIBUTING.md**](https://github.com/CryptOS-PKI/.github/blob/main/CONTRIBUTING.md): the workflow and the DCO sign-off.
-- 💬 [**CODE_OF_CONDUCT.md**](https://github.com/CryptOS-PKI/.github/blob/main/CODE_OF_CONDUCT.md): the CNCF Community Code of Conduct.
-- 🔒 [**SECURITY.md**](https://github.com/CryptOS-PKI/.github/blob/main/SECURITY.md): report vulnerabilities privately, never in a public issue.
-
-## 📄 License
-
-Apache License 2.0. See each repo's `LICENSE` for details.
+[Apache-2.0](https://github.com/CryptOS-PKI/.github/blob/main/LICENSE).
