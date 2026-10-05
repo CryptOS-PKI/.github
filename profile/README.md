@@ -36,6 +36,10 @@ alpha software, versioned 0.x until 1.0.0.
 - [Code of Conduct](https://github.com/CryptOS-PKI/.github/blob/main/CODE_OF_CONDUCT.md)
 - [Security policy](https://github.com/CryptOS-PKI/.github/blob/main/SECURITY.md)
 
+## 🙏 Acknowledgements
+
+CryptOS was originally written by [@Bugs5382](https://github.com/Bugs5382).
+
 ## 📄 Licence
 
 [Apache-2.0](https://github.com/CryptOS-PKI/.github/blob/main/LICENSE).
