@@ -1,6 +1,6 @@
-# 🛡️ CryptOS-PKI
+# CryptOS-PKI 🛡️
 
-> An immutable, API-driven, high-assurance PKI operating system.
+> 🔐 An immutable, API-driven, high-assurance PKI operating system.
 > Talos Linux philosophy applied to certificate authorities.
 > No SSH. No shell. No interactive access. mTLS gRPC only.
 
@@ -16,14 +16,13 @@ It is for teams that run their own internal PKI: TLS and mTLS for services and K
 
 | Repo | What it is |
 |---|---|
-| 🧠 [**cryptos**](https://github.com/CryptOS-PKI/cryptos) | The OS / engine. Builds the Unified Kernel Image (UKI). Hosts the gRPC API, embedded etcd, TPM operations, the enrolment and revocation endpoints, and the `cryptosctl` CLI. **No web UI in the image**, by design. |
-| 📡 [**api**](https://github.com/CryptOS-PKI/api) | Shared `.proto` definitions and generated gRPC stubs. Consumed by `cryptos`, `manager`, and `web` (via generated TS stubs). |
-| 🛰️ [**manager**](https://github.com/CryptOS-PKI/manager) | The Fleet Manager backend. Optional control plane: node adoption and linking, cross-node inventory, fleet topology, and an MCP endpoint for AI agents. Talks to nodes over the same mTLS gRPC API. Holds no private keys. Its own Helm chart is the supported way to install it. |
-| 🎨 [**web**](https://github.com/CryptOS-PKI/web) | The Fleet Manager web frontend, and the only web UI in the project. React + TypeScript, built with Vite, embedded in and served by `manager`. |
-| ⚓ [**helm**](https://github.com/CryptOS-PKI/helm) | Helm charts for the control plane on Kubernetes. Today it holds one Fleet Manager chart; the chart in `manager` is the supported install. |
-| 📚 [**docs**](https://github.com/CryptOS-PKI/docs) | The CryptOS website and documentation: what CryptOS is, installing, running and managing it, the concepts behind it, and the API reference. |
-| 🧪 [**lab**](https://github.com/CryptOS-PKI/lab) | Tooling for testing CryptOS on real and virtual hardware: VMware ESXi via `govc` today, bare metal planned. |
-| 🏠 [**.github**](https://github.com/CryptOS-PKI/.github) | This profile, plus the organization-wide contributing guide, code of conduct and security policy. |
+| [**cryptos-node**](https://github.com/CryptOS-PKI/cryptos-node) | The OS / engine. Builds the Unified Kernel Image (UKI). Hosts the gRPC API, embedded etcd, TPM operations, the enrolment and revocation endpoints, and the `cryptosctl` CLI. **No web UI in the image**, by design. |
+| [**cryptos-manager**](https://github.com/CryptOS-PKI/cryptos-manager) | The Fleet Manager backend. Optional control plane: node adoption and linking, cross-node inventory, fleet topology, and an MCP endpoint for AI agents. Talks to nodes over the same mTLS gRPC API. Holds no private keys. Its own Helm chart is the supported way to install it. |
+| [**cryptos-web**](https://github.com/CryptOS-PKI/cryptos-web) | The Fleet Manager web frontend, and the only web UI in the project. React + TypeScript, built with Vite, embedded in and served by `cryptos-manager`. |
+| [**cryptos-release**](https://github.com/CryptOS-PKI/cryptos-release) | Release packaging: the pinned release manifest, plus a deprecated Fleet Manager chart; the chart in `cryptos-manager` is the supported install. |
+| [**website**](https://github.com/CryptOS-PKI/website) | The CryptOS website and documentation: what CryptOS is, installing, running and managing it, the concepts behind it, and the API reference. |
+| [**cryptos-lab**](https://github.com/CryptOS-PKI/cryptos-lab) | Tooling for testing CryptOS on real and virtual hardware: VMware ESXi via `govc` today, bare metal planned. |
+| [**.github**](https://github.com/CryptOS-PKI/.github) | This profile, plus the organization-wide contributing guide, code of conduct and security policy. |
 
 ## 🚦 Status
 
@@ -70,7 +69,7 @@ It is for teams that run their own internal PKI: TLS and mTLS for services and K
 
 ## 🤝 Get involved
 
-Start with the [docs](https://github.com/CryptOS-PKI/docs), and ⭐ or watch the repos to follow along.
+Start with the [website and docs](https://github.com/CryptOS-PKI/website), and ⭐ or watch the repos to follow along.
 
 Opening issues and pull requests is limited to collaborators today. It will open to the public. When it does, a change starts as an issue from the repo's templates, and every commit is signed off under the [Developer Certificate of Origin](https://developercertificate.org/) (`git commit -s`).
 
