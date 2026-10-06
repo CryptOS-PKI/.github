@@ -1,0 +1,37 @@
+name: Asset metadata
+
+# Reusable: fails when a tracked image or PDF carries a C2PA manifest, a
+# JUMBF box, or a PNG caBX chunk. Design-tool exports (Figma, Adobe, and
+# similar) embed these, and they can name the tool that made the file, which
+# counts as attribution. Mirrors the box's asset-metadata-scan pre-push hook,
+# so CI catches the same thing when a push comes from outside that box.
+on:
+  workflow_call: {}
+
+permissions:
+  contents: read
+
+jobs:
+  asset-metadata:
+    name: Asset metadata
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+
+      - name: Scan tracked images and PDFs for embedded manifests
+        run: |
+          set -uo pipefail
+          # grep exits 1 for "no match" at any stage (no tracked images, or
+          # none of them carry the pattern); that is the clean, passing case,
+          # not a script error, so the pipeline's own exit status is ignored.
+          hits=$(git ls-files -z \
+            | grep -zE '\.(svg|png|jpe?g|webp|gif|ico|avif|pdf)$' \
+            | xargs -0 -r grep -a -l -i -E 'c2pa|jumbf|caBX') || true
+          if [ -n "$hits" ]; then
+            echo "These files carry a C2PA/JUMBF manifest (it can name the tool that made them). Strip the metadata and push again:"
+            echo "$hits"
+            exit 1
+          fi
+          echo "No C2PA/JUMBF/caBX manifests found in tracked images or PDFs."
