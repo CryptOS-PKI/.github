@@ -21,7 +21,8 @@ alpha software, versioned 0.x until 1.0.0.
 
 ## 🧩 Node and Fleet Manager
 
-- [cryptos-node](https://github.com/CryptOS-PKI/cryptos-node): the OS and engine: the signed Unified Kernel Image, the gRPC API, the enrolment and revocation endpoints, and the `cryptosctl` CLI.
+- [cryptos-node](https://github.com/CryptOS-PKI/cryptos-node): the PKI engine: the CA, the gRPC API, the enrolment and revocation endpoints, and the `cryptosctl` CLI.
+- [cryptos-appliance](https://github.com/CryptOS-PKI/cryptos-appliance): the appliance image built around the engine: the hardened kernel, the signed Unified Kernel Image, the read-only SquashFS, the installer and A/B upgrades.
 - [cryptos-manager](https://github.com/CryptOS-PKI/cryptos-manager): the Fleet Manager backend: node adoption, inventory and fleet topology over mTLS gRPC, an MCP endpoint for AI agents, and its own Helm chart.
 
 ## 🖥️ Web
