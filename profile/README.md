@@ -3,6 +3,11 @@
     <source media="(prefers-color-scheme: dark)" srcset="assets/cryptos-mark-dark.svg">
     <img src="assets/cryptos-mark-light.svg" alt="CryptOS mark" width="96">
   </picture>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/fleetos-mark-dark.svg">
+    <img src="assets/fleetos-mark-light.svg" alt="FleetOS mark" width="96">
+  </picture>
 </p>
 
 # CryptOS-PKI 🛡️
