@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/cryptos-mark-dark.svg">
+    <img src="assets/cryptos-mark-light.svg" alt="CryptOS mark" width="96">
+  </picture>
+</p>
+
 # CryptOS-PKI 🛡️
 
 > 🔐 An immutable, API-driven, high-assurance PKI operating system.
