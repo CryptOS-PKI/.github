@@ -10,7 +10,7 @@
   </picture>
 </p>
 
-# CryptOS-PKI 🛡️
+# CryptOS-PKI™ 🛡️
 
 > 🔐 An immutable, API-driven, high-assurance PKI operating system.
 
@@ -56,3 +56,7 @@ CryptOS was originally written by [@Bugs5382](https://github.com/Bugs5382).
 ## 📄 Licence
 
 [Apache-2.0](https://github.com/CryptOS-PKI/.github/blob/main/LICENSE).
+
+## ™️ Trademarks
+
+CryptOS-PKI™, FleetOS™ and their logos are trademarks of the rabbit hole tech, llc. The code is licensed under Apache-2.0; the licence does not grant rights to the names or logos. See [TRADEMARKS.md](https://github.com/CryptOS-PKI/.github/blob/main/TRADEMARKS.md) for the usage policy. Applications to register these trademarks are being prepared; full registered (®) protection is pending until they are granted.
