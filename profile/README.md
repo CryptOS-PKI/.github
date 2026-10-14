@@ -36,7 +36,7 @@ alpha software, versioned 0.x until 1.0.0.
 
 ## 📦 Release and lab
 
-- [cryptos-release](https://github.com/CryptOS-PKI/cryptos-release): the pinned release manifest, plus a deprecated Fleet Manager chart.
+- [cryptos-release](https://github.com/CryptOS-PKI/cryptos-release): a deprecated Fleet Manager Helm chart (the supported chart lives in cryptos-manager).
 - [cryptos-lab](https://github.com/CryptOS-PKI/cryptos-lab): tooling for testing CryptOS on real and virtual hardware: VMware ESXi via `govc` today, bare metal planned.
 
 ## 🌐 Website
