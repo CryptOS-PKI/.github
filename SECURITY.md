@@ -10,12 +10,12 @@ Report a vulnerability through GitHub private vulnerability reporting on the rep
 the problem is in:
 
 1. Open the repository on GitHub, for example
-   [CryptOS-PKI/cryptos](https://github.com/CryptOS-PKI/cryptos).
+   [CryptOS-PKI/cryptos-node](https://github.com/CryptOS-PKI/cryptos-node).
 2. Go to the **Security** tab and choose **Report a vulnerability**.
 3. Describe the problem and send the report. Only you and the maintainers can see it.
 
 If you aren't sure which repository is affected, report it on
-[CryptOS-PKI/cryptos](https://github.com/CryptOS-PKI/cryptos/security/advisories/new).
+[CryptOS-PKI/cryptos-node](https://github.com/CryptOS-PKI/cryptos-node/security/advisories/new).
 
 > [!CAUTION]
 > Never report a vulnerability in a public issue, pull request, discussion or commit. A
