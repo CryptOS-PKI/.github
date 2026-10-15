@@ -103,7 +103,7 @@ By making a contribution to this project, I certify that:
 Any change that adds, removes or changes something a user sees (behaviour, configuration,
 CLI flags, API fields, errors or setup) updates the documentation in the same change:
 
-- The user documentation lives in [CryptOS-PKI/website](https://github.com/CryptOS-PKI/website).
+- The user documentation lives in [CryptOS-PKI/docs](https://github.com/CryptOS-PKI/docs).
   A user-facing change in `cryptos`, `api`, `manager`, `web` or `helm` comes with a
   companion pull request there, the two linked to each other and merged together.
 - The repository's `README.md` stays current in the same pull request.
