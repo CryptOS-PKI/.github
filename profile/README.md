@@ -42,6 +42,10 @@ alpha software, versioned 0.x until 1.0.0.
 
 - [docs](https://github.com/CryptOS-PKI/docs): the source of the CryptOS documentation site.
 
+## 🌐 Website
+
+- [website](https://github.com/CryptOS-PKI/website): the source of the CryptOS product site (www.cryptos-pki.com).
+
 ## 🤝 Contributing
 
 - [Contributing guide](https://github.com/CryptOS-PKI/.github/blob/main/CONTRIBUTING.md), with the DCO sign-off
