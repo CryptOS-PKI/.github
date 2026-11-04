@@ -12,7 +12,7 @@
 
 # CryptOS-PKI™ 🛡️
 
-> 🔐 An immutable, API-driven, high-assurance PKI operating system.
+> An immutable, API-driven PKI operating system™.
 
 CryptOS-PKI is an open-source, Apache-2.0 licensed operating system for certificate
 authorities. One signed, immutable image boots as a Root, Intermediate or Issuing CA.
