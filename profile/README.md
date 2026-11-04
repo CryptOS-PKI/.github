@@ -38,13 +38,9 @@ alpha software, versioned 0.x until 1.0.0.
 
 - [cryptos-lab](https://github.com/CryptOS-PKI/cryptos-lab): tooling for testing CryptOS on real and virtual hardware: VMware ESXi via `govc` today, bare metal planned.
 
-## 📚 Docs
+## 🌐 Website and docs
 
-- [docs](https://github.com/CryptOS-PKI/docs): the source of the CryptOS documentation site.
-
-## 🌐 Website
-
-- [website](https://github.com/CryptOS-PKI/website): the source of the CryptOS product site (www.cryptos-pki.com).
+- [website](https://github.com/CryptOS-PKI/website): the source of the CryptOS product site (www.cryptos-pki.com) and the documentation (docs.cryptos-pki.com).
 
 ## 🤝 Contributing
 
