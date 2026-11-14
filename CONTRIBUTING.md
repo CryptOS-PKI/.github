@@ -104,8 +104,8 @@ Any change that adds, removes or changes something a user sees (behaviour, confi
 CLI flags, API fields, errors or setup) updates the documentation in the same change:
 
 - The user documentation lives in [CryptOS-PKI/website](https://github.com/CryptOS-PKI/website), under `apps/docs`.
-  A user-facing change in `cryptos`, `api`, `manager`, `web` or `helm` comes with a
-  companion pull request there, the two linked to each other and merged together.
+  A user-facing change in `cryptos-node`, `cryptos-manager`, `cryptos-web` or `cryptos-appliance`
+  comes with a companion pull request there, the two linked to each other and merged together.
 - The repository's `README.md` stays current in the same pull request.
 - A change with nothing user-facing says "no docs change" in its pull request description.
 
